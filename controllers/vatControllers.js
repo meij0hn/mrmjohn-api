@@ -37,10 +37,12 @@ const updateVat = async (req, res, next) => {
         const vatList = await vatData.getVat(data);
         if(Array.isArray(vatList) && vatList.length > 0 ) {
             const updated = await vatData.updateVat(data);
+            const vatListAfter = await vatData.getVat(data);
             if(updated == null) {
                 res.json({
                     result: {
-                        message: "Successfully Update Data!"
+                        message: "Successfully Update Data!",
+                        data : vatListAfter
                     },
                     success: true,
                     error: null
