@@ -26,5 +26,11 @@ module.exports = {
             encrypt: sqlEncrypt,
             enableArithAbort: true
         },
+        connectionTimeout: 300000,
+        requestTimeout: 300000,
+        pool: {
+            idleTimeoutMillis: 300000,
+            max: 100
+        }
     },
 };
