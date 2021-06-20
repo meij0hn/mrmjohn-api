@@ -36,7 +36,7 @@ const updateVat = async (req, res, next) => {
         const data = req.body;
         const vatList = await vatData.getVat(data);
         
-        if(data.bookcode == "" || data.tiket == "" ) {
+        if(data.bookcode == null || data.tiket == null) {
             res.status(400).json({
                 result: null,
                 success: false,
