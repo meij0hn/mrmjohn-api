@@ -35,7 +35,14 @@ const updateVat = async (req, res, next) => {
     try {
         const data = req.body;
         const vatList = await vatData.getVat(data);
-        if(Array.isArray(vatList) && vatList.length > 0 ) {
+        
+        if(data.bookcode == "" || data.tiket == "" ) {
+            res.status(400).json({
+                result: null,
+                success: false,
+                error: "Tidak Boleh Kosong!"
+            });
+        } else if(Array.isArray(vatList) && vatList.length > 0 ) {
             const updated = await vatData.updateVat(data);
             const vatListAfter = await vatData.getVat(data);
             if(updated == null) {
