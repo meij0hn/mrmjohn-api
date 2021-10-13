@@ -9,3 +9,5 @@ join    LOG_TR_PaymentDetail tpd ON tph.id = tpd.paymentheaderid
 where	transno = @transno
 and execUN = 'usrMSU'
 and	cast(execTime as date) = cast(getdate() as date)
+
+select 'Done Update Remarks' as remark
